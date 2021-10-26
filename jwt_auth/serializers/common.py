@@ -24,9 +24,10 @@ class UserSerializer(serializers.ModelSerializer):
             raise ValidationError({'password': err.messages})
 
         data['password'] = make_password(password)
+        data['username'] = data['email']
         return data
 
     class Meta:
         model = User
-        fields = ('id', 'email', 'username', 'first_name', 'last_name',
+        fields = ('id', 'email', 'first_name', 'last_name',
                   'profile_image', 'password', 'password_confirmation', 'Bio')

@@ -1,1 +1,30 @@
-[{"model": "tags.tag", "pk": 1, "fields": {"name": "party"}}]
+[
+  {
+    "model": "tags.tag",
+    "pk": 2,
+    "fields": {
+      "name": "Fitness 🏆"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 3,
+    "fields": {
+      "name": "Networking 🧑‍💻"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 4,
+    "fields": {
+      "name": "Outdoors 🏞"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 5,
+    "fields": {
+      "name": "Theatre 🎭"
+    }
+  }
+]

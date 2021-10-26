@@ -17,8 +17,15 @@ class RegisterView(APIView):
     def post(self, request):
         user_to_create = UserSerializer(data=request.data)
         if user_to_create.is_valid():
-            user_to_create.save()
-            return Response({'message': 'Registration Successful'}, status=status.HTTP_202_ACCEPTED)
+            user = user_to_create.save()
+            dt = datetime.now() + timedelta(days=7)
+            token = jwt.encode(
+                {'sub': user.id, 'exp': int(dt.strftime('%s'))},
+                settings.SECRET_KEY,
+                algorithm='HS256'
+            )
+            print('TOKEN', token)
+            return Response({'token': token, 'message': 'Registration Successful'}, status=status.HTTP_202_ACCEPTED)
         return Response(user_to_create.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 
@@ -44,4 +51,5 @@ class LoginView(APIView):
         )
         print('TOKEN', token)
 
+        # return token to the user as a response
         return Response({'token': token, 'message': f"Welcome back, {user_to_login.username}"})

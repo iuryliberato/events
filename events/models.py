@@ -8,7 +8,7 @@ class Event(models.Model):
     price = models.PositiveIntegerField(default=None)
     address = models.CharField(max_length=200, default=None)
     animal_friendly = models.BooleanField(default=True)
-    # event_image = models.ImageField(upload_to='images/', default='None')
+    event_image = models.CharField(max_length=300, blank=True, default='')
     tags = models.ManyToManyField(
         'tags.Tag',
         related_name="events"
