@@ -11,6 +11,8 @@ import Main from './components/common/Main'
 import Footer from './components/common/Footer'
 import CreateEvents from './components/Forms/CreateEvents'
 import SingleEvent from './components/events/SingleEvent'
+import EditEvent from './components/Forms/EditEvent'
+import Profile from './components/profile/profile'
 
 function App() {
   const [theme, setTheme] = useLocalStorage('theme', 'dark')
@@ -36,6 +38,12 @@ function App() {
             </Route>
             <Route exact path='/events/:id/'>
               <SingleEvent />
+            </Route>
+            <Route exact path='/events/:id/edit'>
+              <EditEvent />
+            </Route>
+            <Route exact path='/profile'>
+              <Profile />
             </Route>
           </Switch>
         </Content>

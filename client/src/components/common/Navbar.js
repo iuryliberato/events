@@ -3,6 +3,8 @@ import styled, { ThemeContext } from 'styled-components';
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import logoDark from '../../Logo-dark-theme.png'
 import logoLight from '../../Logo-light-theme.png'
+import profileLogo from '../../profile.png'
+
 
 import LoginForm from '../Forms/LoginForm'
 import RegisterForm from '../Forms/RegisterForm'
@@ -44,6 +46,9 @@ const Navbar = ({ children }) => {
 
           <AllEvents to='/create-event'>+ Events</AllEvents>
           <AllEvents onClick={handleLogout} to='/'>Logout</AllEvents>
+          <Link to='/profile/'>
+            <Profile src={profileLogo} alt="profile-logo"></Profile>
+          </Link>
         </>
       ) : (
         <Register onClick={() => setModalOpen(true)}>
@@ -56,20 +61,26 @@ const Navbar = ({ children }) => {
         </SwitchDiv>
         <>Dark-Mode</>
       </ThemeSwitch>
-      {modalOpen && (
-        <>
-          <Modal onClick={() => setModalOpen(false)} />
-          <ModelContent>
-            <LoginForm />
-            <SubTextOr>Or</SubTextOr>
-            <RegisterForm />
-          </ModelContent>
-        </>
-      )}
+      {
+        modalOpen && (
+          <>
+            <Modal onClick={() => setModalOpen(false)} />
+            <ModelContent>
+              <LoginForm />
+              <SubTextOr>Or</SubTextOr>
+              <RegisterForm />
+            </ModelContent>
+          </>
+        )
+      }
     </Container >
   )
 }
-
+const Profile = styled.img`
+width: 40px;
+height: 40px;
+margin: 20px;
+`
 
 const SubTextOr = styled.div`
 display: flex;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory, Link } from 'react-router-dom'
 import { getTokenFromLocalStorage, getPayload } from '../Helpers/Auth'
 import { Container as _Container } from "../Forms/forms.styles"
 import styled from 'styled-components'
@@ -55,6 +55,16 @@ const SingleEvent = () => {
       {event ?
 
         <>
+
+
+          {
+            userIsOwner(event.owner.id) && // Add recipe.owner.id instead
+            <div className="edit">
+              <Link to={`/events/${event.id}/edit/`}><button>Edit Event</button></Link>
+              <button onClick={handleDeleteEvent}>Delete Event</button>
+            </div>
+          }
+
           <Img src={event.event_image} alt={event.event_title} />
           <Title>{event.event_title}</Title>
 
