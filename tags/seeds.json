@@ -1,30 +1,240 @@
 [
   {
     "model": "tags.tag",
-    "pk": 2,
+    "pk": 1,
     "fields": {
       "name": "Fitness 🏆"
     }
   },
   {
     "model": "tags.tag",
-    "pk": 3,
-    "fields": {
-      "name": "Networking 🧑‍💻"
-    }
-  },
-  {
-    "model": "tags.tag",
-    "pk": 4,
+    "pk": 2,
     "fields": {
       "name": "Outdoors 🏞"
     }
   },
   {
     "model": "tags.tag",
+    "pk": 3,
+    "fields": {
+      "name": "LGBTQ+ 🏳️‍🌈🏳️‍⚧️"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 4,
+    "fields": {
+      "name": "UK Events 🇬🇧"
+    }
+  },
+  {
+    "model": "tags.tag",
     "pk": 5,
     "fields": {
+      "name": "Music 🎵"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 6,
+    "fields": {
       "name": "Theatre 🎭"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 7,
+    "fields": {
+      "name": "Halloween 🎃"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 8,
+    "fields": {
+      "name": "Christmas 🎅"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 9,
+    "fields": {
+      "name": "Club💃"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 10,
+    "fields": {
+      "name": "Concerts 🎤"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 11,
+    "fields": {
+      "name": "Culinary 🥨"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 12,
+    "fields": {
+      "name": "summer ☀️"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 13,
+    "fields": {
+      "name": "Winter ❄️"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 14,
+    "fields": {
+      "name": "Running 🏃‍♂️"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 15,
+    "fields": {
+      "name": "Festival  😎"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 16,
+    "fields": {
+      "name": "Birthday 🥳"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 17,
+    "fields": {
+      "name": "Networking 🧑‍💻"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 18,
+    "fields": {
+      "name": "Hip-Hop 🎤"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 20,
+    "fields": {
+      "name": "Foodie 🍕"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 21,
+    "fields": {
+      "name": "Musical 🎵"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 22,
+    "fields": {
+      "name": "Studying 📚"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 23,
+    "fields": {
+      "name": "Pub 🍺"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 24,
+    "fields": {
+      "name": "Wine o'clock 🍷"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 25,
+    "fields": {
+      "name": "Yoga 🧘‍♂️"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 26,
+    "fields": {
+      "name": "Meditation 🧘"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 27,
+    "fields": {
+      "name": "Park 🍁"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 28,
+    "fields": {
+      "name": "Family 👨‍👩‍👦👩‍👩‍👦👨‍👨‍👦"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 29,
+    "fields": {
+      "name": "Pet 🐵"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 30,
+    "fields": {
+      "name": "Bootcamp 🧑‍💻"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 31,
+    "fields": {
+      "name": "New Years 🎇"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 32,
+    "fields": {
+      "name": "Brunch 🍾"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 33,
+    "fields": {
+      "name": "gardening 👨‍🌾"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 34,
+    "fields": {
+      "name": "Vegan 🌱"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 35,
+    "fields": {
+      "name": "Vegetarian  🧀"
     }
   }
 ]

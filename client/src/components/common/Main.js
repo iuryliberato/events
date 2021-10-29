@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Container } from "../Forms/forms.styles"
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import Ticker from 'react-ticker'
+
 
 const itemsPerPage = 6
 
@@ -72,8 +74,14 @@ const Main = () => {
 
   return (
     <>
-      <Scrowler>
-      </Scrowler>
+
+      <Scroller>
+        <Ticker>
+          {() => <TextScroller>BEST EVENTS IN TOWN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔜 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RUNNING-CLUBS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔜 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FESTIVALS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  🔜  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONCERTS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🔜 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SHOWS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TextScroller>}
+        </Ticker>
+      </Scroller>
+
+
 
       <Container>
         <Filters>
@@ -83,7 +91,7 @@ const Main = () => {
 
           <Input type='date' placeholder='When' id='when-field' onInput={handleDate}></Input>
 
-          <SelectOption className="searchSelect" htmlFor="recipes" id="recipes" onChange={handlePrice}>
+          <SelectOption onChange={handlePrice}>
             <option value="all" default> Price £ </option>
             <option value="thirty">£0 to £30</option>
             <option value="sixty">£0 to £60</option>
@@ -141,13 +149,14 @@ const View = styled.button`
         background-color: ${props => props.theme.primary};
         color: black;
         padding: 10px 100px;
-       align-self: stretch;
+        align-self: stretch;
         text-decoration: none;
         font-family: 'Inter', sans-serif;
         border-radius: 5px;
         outline: 0 none;
         border: 0 none;
         margin: 0 30px;
+        cursor: pointer;
         `
 
 
@@ -233,11 +242,16 @@ const Filters = styled.div`
         flex-direction: row;
         justify-content: space-between;
         `
-const Scrowler = styled.div`
-        background-color: ${props => props.theme.primary};
-        height: 50px;
-        color: black;
-        font-size: 20px;
+const TextScroller = styled.div`
+font-family: 'Wallpoet', cursive;        
+font-size: 20px;
+color: black;
+
+ `
+const Scroller = styled.div`
+       background-color: ${props => props.theme.primary};
+         padding: 10px 0;
+         color: black;
         `
 
 export default Main

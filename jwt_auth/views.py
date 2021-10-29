@@ -57,20 +57,29 @@ class LoginView(APIView):
 
 class ProfileView(APIView):
 
-    def get(self, _request, pk):
+    def get_user(self, pk):
         try:
-            user_profile = User.objects.get(pk=pk)
-            user = UserSerializer(user_profile)
-            print('message one', user)
-
+            return User.objects.get(pk=pk)
         except User.DoesNotExist:
             raise PermissionDenied(detail="Invalid Credentials")
 
-        dt = datetime.now() + timedelta(days=7)
-        token = jwt.encode(
-            {'sub': user_profile.id, 'exp': int(dt.strftime('%s'))},
-            settings.SECRET_KEY,
-            algorithm='HS256'
-        )
-        print('TOKEN', token)
-        return Response({})
+    def get(self, _request, pk):
+        user = self.get_user(pk=pk)
+        serialized_user = UserSerializer(user)
+        print('userrrr', serialized_user)
+        return Response(serialized_user.data, status=status.HTTP_200_OK)
+
+
+class LoggedInProfileView(APIView):
+
+    def get_user(self, pk):
+        try:
+            return User.objects.get(pk=pk)
+        except User.DoesNotExist:
+            raise PermissionDenied(detail="Invalid Credentials")
+
+    def get(self, request):
+        user = self.get_user(pk=request.user.id)
+        serialized_user = UserSerializer(user)
+        print('userrrr', serialized_user)
+        return Response(serialized_user.data, status=status.HTTP_200_OK)

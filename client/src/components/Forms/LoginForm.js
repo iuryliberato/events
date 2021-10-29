@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { UserInput, Input, SubText, Submit, SubmitDiv, GoogleLink } from "./forms.styles";
 import axios from 'axios'
 import { useHistory } from 'react-router';
+import GoogleLogin from 'react-google-login'
 
 const LoginForm = () => {
   const history = useHistory()
@@ -11,17 +12,13 @@ const LoginForm = () => {
     password: ''
 
   })
-  const [errors, setErrors] = useState({
-    email: { message: '' },
-    password: { message: '' }
-
-  })
+  const [error, setError] = useState('')
 
 
   const handleChange = (event) => {
     const newObj = { ...formData, [event.target.name]: event.target.value }
     setFormData(newObj)
-    setErrors({ ...errors, [event.target.name]: '' })
+    setError('')
   }
 
   const setTokenToLocalStorage = (token) => {
@@ -35,9 +32,26 @@ const LoginForm = () => {
       setTokenToLocalStorage(data.token)
       history.go(0)
     } catch (error) {
-      console.log('error ->', error.response.data.errors)
-      if (error.response.data.errors) setErrors(error.response.data.errors)
+      console.log('errors ->', error.response.data)
+      if (error.response.data.detail) setError(error.response.data.detail)
     }
+  }
+
+  const responseGoogle = async (response) => {
+    console.log(response)
+    try {
+      const { data } = await axios.post('api/auth/login/', {
+        email: response.profileObj.email,
+        password: response.profileObj.googleId + 'abc?!'
+      })
+      setTokenToLocalStorage(data.token)
+      history.go(0)
+
+    } catch (error) {
+      console.log('error ->', error.response.data)
+      if (error.response.data.detail) setError(error.response.data.detail)
+    }
+
   }
 
   return (
@@ -50,12 +64,21 @@ const LoginForm = () => {
         <UserInput><Input onInput={handleChange} type="email" id="email" name="email" placeholder="User Email" /></UserInput>
 
         <UserInput><Input onInput={handleChange} type="password" id="password" name="password" placeholder="Password" /></UserInput>
+        <SubTextError>{error && <p className="error">{error}</p>}</SubTextError>
         <SubText>Or</SubText>
-        <GoogleLink>Login with Google accounts</GoogleLink>
 
+        <GoogleLink>
+          <GoogleLogin
+            clientId="307212407201-o3nofvpj446fk0aup46u2dcul358n3m8.apps.googleusercontent.com"
+            buttonText="Login"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          />
+        </GoogleLink>
 
       </LoginBox>
-      {errors.message && <p className="error">You've entered an invalid email/password combination. Try again</p>}
+
       <SubmitDiv>
         <Submit type="submit" >LOGIN</Submit>
       </SubmitDiv>
@@ -65,6 +88,12 @@ const LoginForm = () => {
 }
 
 
+const SubTextError = styled.div`
+font-size: 15px;
+font-family: 'Inter', sans-serif;
+color: red;
+margin-left: 20px;
+`
 
 const LoginBox = styled.div`
 margin: 70px 0 30px;

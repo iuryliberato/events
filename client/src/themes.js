@@ -11,7 +11,8 @@ export const lightTheme = {
   inputBox: '#eeeeee',
   footer: '#D3D3D3',
   inputFilter: '#ffffff',
-  inputText: '#737373'
+  inputText: '#737373',
+  cardLight: '#f3f3f3'
 }
 
 export const darkTheme = {
@@ -24,13 +25,14 @@ export const darkTheme = {
   inputBox: '#ffffff',
   footer: '#2F2F2F',
   inputFilter: '#424242',
-  inputText: '#cccccc'
+  inputText: '#cccccc',
+  cardLight: '#424242'
 }
 
 export const GlobalStyles = createGlobalStyle`
   html, body {
     margin: 0;
-    font-family: 'Orienta', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
   }
   body {
     min-height: 100vh;

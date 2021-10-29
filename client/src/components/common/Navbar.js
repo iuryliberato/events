@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react'
-import styled, { ThemeContext } from 'styled-components';
+import styled, { ThemeContext } from 'styled-components'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import logoDark from '../../Logo-dark-theme.png'
 import logoLight from '../../Logo-light-theme.png'
 import profileLogo from '../../profile.png'
+
 
 
 import LoginForm from '../Forms/LoginForm'
@@ -44,7 +45,7 @@ const Navbar = ({ children }) => {
       {userIsAuthenticated() ? (
         <>
 
-          <AllEvents to='/create-event'>+ Events</AllEvents>
+          <AllEvents to='/create-event'>Add Events</AllEvents>
           <AllEvents onClick={handleLogout} to='/'>Logout</AllEvents>
           <Link to='/profile/'>
             <Profile src={profileLogo} alt="profile-logo"></Profile>

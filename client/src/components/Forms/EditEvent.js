@@ -60,7 +60,16 @@ const EditEvents = () => {
     const getEvents = async () => {
       try {
         const { data } = await axios.get(`/api/events/${id}`)
-        setFormData(data)
+        setFormData({
+          event_title: data.event_title,
+          description: data.description,
+          date: data.date,
+          price: data.price,
+          address: data.address,
+          animal_friendly: data.animal_friendly,
+          tags: data.tags.map(tag => tag.id),
+          owner: data.owner.id
+        })
 
       } catch (error) {
         // setHasError(true)
@@ -106,23 +115,33 @@ const EditEvents = () => {
           <form onSubmit={handleSubmit}>
             <FormField>
 
-              <UserInput><Code>{JSON.stringify(formData)}</Code></UserInput>
 
+              <Label>Event's title:</Label>
               <UserInput><Input onInput={handleChange} name="event_title" id="title" type="text" placeholder="Event title" value={formData.event_title} /></UserInput>
               {errors.name && <p className="error">Please enter event's title</p>}
 
+              <Label>Description:</Label>
               <UserInput><Description onInput={handleChange} as="textarea" id="description" name="description" placeholder="Description" >{formData.description}</Description></UserInput>
               {errors.name && <p className="error">Please enter event's description</p>}
 
-
+              <Label>Date:</Label>
               <UserInput><Input onInput={handleChange} name="date" type="date" placeholder="Date" value={formData.date} /></UserInput>
 
+              <Label>Start from:</Label>
+              <UserInput><Input onInput={handleChange} name="time_from" type="time" placeholder="Time from" value={formData.time_from} /></UserInput>
+              {errors.time_from && errors.time_from.length > 0 && <SubTextError>{errors.time_from[0]}</SubTextError>}
 
+              <Label>Until:</Label>
+              <UserInput><Input onInput={handleChange} name="time_until" type="time" placeholder="Time until" value={formData.time_until} /></UserInput>
+              {errors.time_until && errors.time_until.length > 0 && <SubTextError>{errors.time_until[0]}</SubTextError>}
+
+              <Label>Price:</Label>
               <UserInput><Input onInput={handleChange} name="price" type="text" placeholder="Price" value={formData.price} /></UserInput>
 
-
+              <Label>Adress:</Label>
               <UserInput><Input onInput={handleChange} name="address" type="text" placeholder="Address" value={formData.address} /></UserInput>
 
+              <Label>Tags:</Label>
               <Dropdown><Select options={options.map(option => ({ id: option.id, value: option.id, label: option.name }))} isMulti name="tags" onChange={handleMultiEnter} /></Dropdown>
               <div>
 
@@ -141,11 +160,20 @@ const EditEvents = () => {
 
   )
 }
-
-const Code = styled.pre`
-  width: 500px;
+const Label = styled.label`
+margin-left: 19px;
+font-size: 15px;
 `
-
+const SubTextError = styled.span`
+align-self: flex-start;
+        font-size: 12px;      
+        padding: 3px;
+        color: black;
+        margin-left: 25px;
+        background-color: #EF8B2F;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        `
 
 const Scrowler = styled.div`
 background-color: ${props => props.theme.primary};
@@ -156,9 +184,7 @@ margin-bottom: 50px;
 `
 
 
-const Label = styled.label`
-margin-left: 8px;
-`
+
 
 const CheckBox = styled.input`
 margin: 0 0 10px 20px;
