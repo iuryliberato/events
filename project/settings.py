@@ -4,7 +4,6 @@ import django_on_heroku  # put this at the top of the file
 
 # all the rest of the settings file...
 
-django_on_heroku.settings(locals())  # put this last
 """
 Django settings for project project.
 
@@ -20,6 +19,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+print(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -74,9 +74,8 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'client')
-                 ]  # Look, we have added the root folder of frontend here
-        ,
+        # Look, we have added the root folder of frontend here
+        'DIRS': [os.path.join(BASE_DIR, 'client')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -173,5 +172,8 @@ ROOT_URLCONF = 'project.urls'  # check if you have this already, if not add it i
 STATIC_URL = '/static/'  # same with this
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'client', "build", "static"),
+    os.path.join(BASE_DIR, 'client', 'build', 'static'),
+
 )
+
+django_on_heroku.settings(locals())
