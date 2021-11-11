@@ -49,11 +49,8 @@ INSTALLED_APPS = [
     'reviews',
     'tags',
     'jwt_auth',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google'
+    'django.contrib.sites'
+
 ]
 
 SITE_ID = 1
