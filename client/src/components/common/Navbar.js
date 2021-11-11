@@ -16,6 +16,7 @@ import { userIsAuthenticated } from '../Helpers/Auth';
 
 const Navbar = ({ children }) => {
   const theme = useContext(ThemeContext);
+
   const [modalOpen, setModalOpen] = useState(false)
 
   const history = useHistory()
