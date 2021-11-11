@@ -16,7 +16,7 @@ const SingleEvent = () => {
 
   const getEvent = useCallback(async () => {
     try {
-      const { data } = await axios.get(`/api/events/${id}`)
+      const { data } = await axios.get(`/api/events/${id}/`)
       setEvent(data)
       console.log(data)
     } catch (error) {

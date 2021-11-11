@@ -59,7 +59,7 @@ const EditEvents = () => {
   useEffect(() => {
     const getEvents = async () => {
       try {
-        const { data } = await axios.get(`/api/events/${id}`)
+        const { data } = await axios.get(`/api/events/${id}/`)
         setFormData({
           event_title: data.event_title,
           description: data.description,

@@ -46,7 +46,7 @@ const Navbar = ({ children }) => {
       {userIsAuthenticated() ? (
         <>
 
-          <AllEvents to='/create-event'>Add Events</AllEvents>
+          <AllEvents to='/create-event/'>Add Events</AllEvents>
           <AllEvents onClick={handleLogout} to='/'>Logout</AllEvents>
           <Link to='/profile/'>
             <Profile src={profileLogo} alt="profile-logo"></Profile>

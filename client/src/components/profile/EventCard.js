@@ -28,7 +28,7 @@ const EventCard = ({ event }) => {
       <Title>{event.event_title}</Title>
       <Date>Date: {event.date}</Date>
       <Price>Price: £{event.price}</Price>
-      <View as={Link} to={`/events/${event.id}`}>View</View>
+      <View as={Link} to={`/events/${event.id}/`}>View</View>
       <Settings>
         {
           userIsOwner(event.owner.id) &&
