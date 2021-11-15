@@ -12,7 +12,9 @@ export const lightTheme = {
   footer: '#D3D3D3',
   inputFilter: '#ffffff',
   inputText: '#737373',
-  cardLight: '#f3f3f3'
+  cardLight: '#f3f3f3',
+  menu: '#9EBD9F',
+  menuBackground: '#f0f0f0'
 }
 
 export const darkTheme = {
@@ -26,10 +28,15 @@ export const darkTheme = {
   footer: '#2F2F2F',
   inputFilter: '#424242',
   inputText: '#cccccc',
-  cardLight: '#424242'
+  cardLight: '#424242',
+  menu: '#00E0AA',
+  menuBackground: '#282828'
 }
 
 export const GlobalStyles = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
   html, body {
     margin: 0;
     font-family: 'Josefin Sans', sans-serif;

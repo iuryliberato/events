@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
-import styled from 'styled-components';
-import { UserInput, Input, SubText, Submit, GoogleLink, EventImage, SubmitDiv } from "./forms.styles";
+import styled from 'styled-components'
+import {
+  UserInput,
+  Input,
+  SubText,
+  Submit,
+  GoogleLink,
+  EventImage,
+  SubmitDiv,
+} from './forms.styles'
 import axios from 'axios'
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router'
 import ImageUpload from '../Helpers/Image_upload'
 import GoogleLogin from 'react-google-login'
+import { device } from '../Helpers/style.components/sizes'
 
 const RegisterForm = () => {
-
   const history = useHistory()
   const [formData, setFormData] = useState({
     email: '',
@@ -15,17 +23,16 @@ const RegisterForm = () => {
     last_name: '',
     password: '',
     password_confirmation: '',
-    profile_image: 'http://romanroadtrust.co.uk/wp-content/uploads/2018/01/profile-icon-png-898.png',
-    Bio: ''
+    profile_image:
+      'http://romanroadtrust.co.uk/wp-content/uploads/2018/01/profile-icon-png-898.png',
+    Bio: '',
   })
   const [errors, setErrors] = useState({
     email: [],
     username: [],
     password: [],
-    passwordConfirmation: []
+    passwordConfirmation: [],
   })
-
-
 
   const handleChange = (event) => {
     const newObj = { ...formData, [event.target.name]: event.target.value }
@@ -43,7 +50,6 @@ const RegisterForm = () => {
       const { data } = await axios.post('api/auth/register/', formData)
       setTokenToLocalStorage(data.token)
       history.go(0)
-
     } catch (error) {
       console.log('error ->', error.response.data)
       if (error.response.data) setErrors(error.response.data)
@@ -67,16 +73,14 @@ const RegisterForm = () => {
         password: response.profileObj.googleId + 'abc?!',
         password_confirmation: response.profileObj.googleId + 'abc?!',
         profile_image: response.profileObj.imageUrl,
-        Bio: ''
+        Bio: '',
       })
       setTokenToLocalStorage(data.token)
       history.go(0)
-
     } catch (error) {
       console.log('error ->', error.response.data)
       if (error.response.data) setErrors(error.response.data)
     }
-
   }
 
   return (
@@ -91,32 +95,84 @@ const RegisterForm = () => {
           onFailure={responseGoogle}
           cookiePolicy={'single_host_origin'}
         />
-
       </GoogleLink>
 
       <SubText>Or</SubText>
       <SubText>Create your account</SubText>
 
+      <UserInput>
+        <Input
+          onInput={handleChange}
+          type="text"
+          id="user-name"
+          name="first_name"
+          placeholder="First Name"
+          value={formData.first_name}
+        />
+      </UserInput>
+      {errors.first_name && errors.first_name.length > 0 && (
+        <SubTextError>{errors.first_name[0]}</SubTextError>
+      )}
 
-      <UserInput><Input onInput={handleChange} type="text" id="user-name" name="first_name" placeholder="First Name" value={formData.first_name} /></UserInput>
-      {errors.first_name && errors.first_name.length > 0 && <SubTextError>{errors.first_name[0]}</SubTextError>}
+      <UserInput>
+        <Input
+          onInput={handleChange}
+          type="text"
+          id="last-name"
+          name="last_name"
+          placeholder="Last name"
+          value={formData.last_name}
+        />
+      </UserInput>
+      {errors.last_name && errors.last_name.length > 0 && (
+        <SubTextError>{errors.last_name[0]}</SubTextError>
+      )}
 
-      <UserInput><Input onInput={handleChange} type="text" id="last-name" name="last_name" placeholder="Last name" value={formData.last_name} /></UserInput>
-      {errors.last_name && errors.last_name.length > 0 && <SubTextError>{errors.last_name[0]}</SubTextError>}
+      <UserInput>
+        <Input
+          onInput={handleChange}
+          type="email"
+          id="email"
+          name="email"
+          placeholder="User Email"
+          value={formData.email}
+        />
+      </UserInput>
+      {errors.email && errors.email.length > 0 && (
+        <SubTextError>{errors.email[0]}</SubTextError>
+      )}
 
-      <UserInput><Input onInput={handleChange} type="email" id="email" name="email" placeholder="User Email" value={formData.email} /></UserInput>
-      {errors.email && errors.email.length > 0 && <SubTextError>{errors.email[0]}</SubTextError>}
+      <UserInput>
+        <Input
+          onInput={handleChange}
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+        />
+      </UserInput>
+      {errors.password && errors.password.length > 0 && (
+        <SubTextError>{errors.password[0]}</SubTextError>
+      )}
 
+      <UserInput>
+        <Input
+          onInput={handleChange}
+          type="password"
+          id="password-confirmation"
+          name="password_confirmation"
+          placeholder="Password Confirmation"
+          value={formData.password_confirmation}
+        />
+      </UserInput>
+      {errors.password_confirmation &&
+        errors.password_confirmation.length > 0 && (
+          <SubTextError>{errors.password_confirmation[0]}</SubTextError>
+        )}
 
-
-
-      <UserInput><Input onInput={handleChange} type="password" id="password" name="password" placeholder="Password" value={formData.password} /></UserInput>
-      {errors.password && errors.password.length > 0 && <SubTextError>{errors.password[0]}</SubTextError>}
-
-      <UserInput><Input onInput={handleChange} type="password" id="password-confirmation" name="password_confirmation" placeholder="Password Confirmation" value={formData.password_confirmation} /></UserInput>
-      {errors.password_confirmation && errors.password_confirmation.length > 0 && <SubTextError>{errors.password_confirmation[0]}</SubTextError>}
-
-      <EventImage><p>Upload a image for your Profile:</p>
+      <EventImage>
+        <Upload>Upload a image for your Profile:</Upload>
         <ImageUpload name="profile_image" handleImageUrl={handleImageUrl} />
       </EventImage>
 
@@ -126,19 +182,29 @@ const RegisterForm = () => {
     </form>
   )
 }
-
+const Upload = styled.div`
+  font-size: 15px;
+  margin: 0 0 10px 0;
+`
 const SubTextError = styled.div`
-        font-size: 15px;
-        font-family: 'Inter', sans-serif;
-        color: red;
-        margin-left: 20px;
-        `
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  color: red;
+  margin-left: 20px;
+`
 const RegisterHead = styled.div`
-        font-size: 45px;
-        display: flex;
-        justify-content: center;
-        margin: 50px 0 30px;
-        font-family: 'Inter', sans-serif;
-        `
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 30px;
+  font-family: 'Inter', sans-serif;
+  @media ${device.tablet} {
+    font-size: 35px;
+  }
+  @media ${device.desktop} {
+    font-size: 45px;
+    margin: 50px 0 30px;
+  }
+`
 
 export default RegisterForm

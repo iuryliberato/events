@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { getTokenFromLocalStorage, getUserId } from '../Helpers/Auth'
 import axios from 'axios'
-
+import { device } from '../Helpers/style.components/sizes'
 import styled from 'styled-components'
-import { Container } from "../Forms/forms.styles"
+import { Container } from '../Forms/forms.styles'
 import EventCard from './EventCard'
 
 const Profile = () => {
-
   const [profile, setProfile] = useState({})
   const [hasError, setHasError] = useState(false)
   const [events, setEvents] = useState([])
@@ -17,8 +16,7 @@ const Profile = () => {
       try {
         const { data } = await axios.get('/api/events/')
         setEvents(data)
-      } catch (error) {
-      }
+      } catch (error) {}
     }
     getData()
   }, [setEvents])
@@ -26,12 +24,10 @@ const Profile = () => {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        const { data } = await axios.get(
-          '/api/auth/profile/',
-          { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } }
-        )
+        const { data } = await axios.get('/api/auth/profile/', {
+          headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+        })
         setProfile(data)
-
       } catch (error) {
         setHasError(true)
       }
@@ -41,87 +37,108 @@ const Profile = () => {
 
   const userId = getUserId()
 
-  const yourEvents = events.filter(event => event.owner.id === userId)
+  const yourEvents = events.filter((event) => event.owner.id === userId)
 
-  const attendingEvents = events.filter(event => {
-    return event.join.find(join => join.owner === userId)
+  const attendingEvents = events.filter((event) => {
+    return event.join.find((join) => join.owner === userId)
   })
-
-
-
 
   return (
     <Container>
-      {profile ?
+      {profile ? (
         <>
-          {profile.profile_image && <ProfileImg><ProfilePic src={profile.profile_image} alt="profile" /></ProfileImg>}
+          {profile.profile_image && (
+            <ProfileImg>
+              <ProfilePic src={profile.profile_image} alt="profile" />
+            </ProfileImg>
+          )}
 
           <Welcome>Welcome, {profile.first_name}</Welcome>
 
           <Manage>Manage your events</Manage>
 
           <Cards>
-            {yourEvents.map(event => <EventCard key={event._id} event={event} />)}
+            {yourEvents.map((event) => (
+              <EventCard key={event._id} event={event} />
+            ))}
           </Cards>
           <Hr />
           <Going>Events that you are going</Going>
           <Cards>
-            {attendingEvents.map(event => <EventCard key={event._id} event={event} />)}
+            {attendingEvents.map((event) => (
+              <EventCard key={event._id} event={event} />
+            ))}
           </Cards>
-
-        </> : <>
-          {hasError ?
-            <h2>Oops something went wrong.</h2>
-            :
-            <h2>Loading...</h2>
-          }
         </>
-      }
+      ) : (
+        <>
+          {hasError ? <h2>Oops something went wrong.</h2> : <h2>Loading...</h2>}
+        </>
+      )}
     </Container>
-
   )
 }
 
 const Hr = styled.hr`
-border-color: ${props => props.theme.primary};
+  border-color: ${(props) => props.theme.primary};
 `
 
 const Going = styled.div`
-display: flex;
-justify-content: center;
-font-size: 45px;
-font-family: 'Inter', sans-serif;
-margin: 90px 0 110px;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-family: 'Inter', sans-serif;
+  margin: 90px 20px 90px;
+  color: ${(props) => props.theme.primary};
+  text-align: center;
+  @media ${device.tablet} {
+    font-size: 45px;
+  }
+  @media ${device.desktop} {
+    font-size: 45px;
+  }
 `
 
 const Manage = styled.div`
-display: flex;
-justify-content: center;
-font-size: 45px;
-font-family: 'Inter', sans-serif;
-margin: 50px 0 60px;
+  display: flex;
+  color: ${(props) => props.theme.primary};
+  justify-content: center;
+  font-size: 30px;
+  font-family: 'Inter', sans-serif;
+  margin: 50px 0 60px;
+  @media ${device.tablet} {
+    font-size: 45px;
+  }
+  @media ${device.desktop} {
+    font-size: 45px;
+  }
 `
 const Welcome = styled.div`
-display: flex;
-justify-content: center;
-font-family: 'Inter', sans-serif;
-font-size: 35px;
-margin: 20px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 35px;
+  margin: 20px;
 `
 
 const ProfileImg = styled.div`
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 `
 const ProfilePic = styled.img`
-width: 150px;
-height: 150px;
-border-radius: 75px;
-margin: 30px;
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  margin: 30px;
 `
 
 const Cards = styled.div`
-display: flex;
-flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+
+  @media ${device.tablet} {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 `
 export default Profile
