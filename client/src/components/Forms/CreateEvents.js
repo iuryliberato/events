@@ -60,7 +60,7 @@ const CreateEvents = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get('api/tags/')
+      const { data } = await axios.get('/api/tags/')
       setOptions(data)
     }
     getData()
