@@ -88,7 +88,7 @@ const EditEvents = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.put(`http://localhost:3000/api/events/${id}/`, formData, {
+      await axios.put(`/api/events/${id}/`, formData, {
         headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
       })
       history.push(`/events/${id}/`)
