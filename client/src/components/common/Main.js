@@ -96,9 +96,11 @@ const Main = () => {
 
           <Input
             type="date"
-            placeholder="When"
+            placeholder="date"
             id="when-field"
+            onfocus="(this.type='date')"
             onInput={handleDate}
+            onblur="if(this.value==''){this.type='text'}"
           ></Input>
 
           <SelectOption onChange={handlePrice}>
@@ -121,7 +123,7 @@ const Main = () => {
             )
             .slice(0, pageNumber * itemsPerPage)
             .map((event) => (
-              <EventCard key={event._id} event={event} />
+              <EventCard key={event.id} event={event} />
             ))}
         </Cards>
         <LoadBox>
@@ -167,6 +169,7 @@ const Filters = styled.div`
   margin: 40px 0 60px;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 
   @media ${device.tablet} {
     flex-direction: row;
@@ -183,11 +186,12 @@ const Input = styled.input`
   border-radius: 20px;
   outline: 0 none;
   border: 0 none;
-  padding: 0 10px 0 10px;
+  padding: 0 10px 0 15px;
   color: ${(props) => props.theme.inputText};
-  padding-left: 15px;
   font-size: 15px;
   margin: 5px;
+  appearance: none;
+  text-align: left;
   &::placeholder {
     color: ${(props) => props.theme.inputText};
   }

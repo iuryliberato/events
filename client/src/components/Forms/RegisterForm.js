@@ -34,6 +34,7 @@ const RegisterForm = () => {
     passwordConfirmation: [],
   })
 
+
   const handleChange = (event) => {
     const newObj = { ...formData, [event.target.name]: event.target.value }
     setFormData(newObj)
@@ -55,6 +56,9 @@ const RegisterForm = () => {
       if (error.response.data) setErrors(error.response.data)
     }
   }
+
+    
+
 
   const handleImageUrl = (url) => {
     try {
@@ -84,6 +88,11 @@ const RegisterForm = () => {
   }
 
   return (
+
+
+
+
+
     <form onSubmit={handleSubmit}>
       <RegisterHead>Register</RegisterHead>
 

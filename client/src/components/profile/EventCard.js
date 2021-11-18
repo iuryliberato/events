@@ -8,7 +8,7 @@ import { device } from '../Helpers/style.components/sizes'
 const EventCard = ({ event }) => {
   const handleDeleteEvent = async (id) => {
     try {
-      await axios.delete(`/api/events/${id}`, {
+      await axios.delete(`/api/events/${id}/`, {
         headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
       })
       window.location.reload()

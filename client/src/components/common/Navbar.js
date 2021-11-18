@@ -68,11 +68,13 @@ const Navbar = ({ children }) => {
           <MenuButton onClick={() => setMenuOpen(true)}>
             <ImgMenu src={Menu} alt="Menu" />
           </MenuButton>
+
           <MenuBackground menuOpen={menuOpen}></MenuBackground>
           <NavLinksDiv ref={drawerRef} menuOpen={menuOpen}>
             <Link onClick={handleMenuLink} to="/profile/">
               <Profile src={profileLogo} alt="profile-logo"></Profile>
             </Link>
+
             <NavbarItem onClick={handleMenuLink} to="/">
               All Events
             </NavbarItem>
