@@ -1,31 +1,29 @@
 
 
-# **General Assembly**
+# General Assembly
 
 
-# **Project 4 - EVE.Events 🕺🏻🎭🎬**
+# Project 4 - EVE.Events 🕺🏻🎭🎬
 
 Eve.Events is a web-app where you can search for events, confirm your attendance, register and also create your own events. 
 
 
-## 
-**Event’s Link**
+## Event’s Link
 
 [EVE.Events](https://eve-social-events.herokuapp.com/)
 
 
-## 
-**Goal **
+## Goal 
 
 This was a 8 day solo project. I was asked to build a full Stack application with a React front-end and a Django back-end, a fully functional RESTful API with all routes (GET, POST, PUT, DELETE), and content relationships including OneToMany and  ManyToMany, custom authentication (register/login) and a pre-planned wireframe for the front-end.  
 
 
-## **Overview and Concept **
+## Overview and Concept 
 
 This is a React app with a Python and Django back-end, React, JavaScript, CSS with Styled-Components in the front-end. Users can register/login manually or register/login with Google, switch themes between dark and light mode, search and filter events, confirm attendance, and create their own events. In their own profile, they can see, edit and delete events that they have created and also see events that they are attending.
 
 
-## **Technologies used**
+## Technologies used
 
 
 
@@ -44,7 +42,7 @@ This is a React app with a Python and Django back-end, React, JavaScript, CSS wi
 * Figma.
 
 
-## **Approach Taken:**
+## Approach Taken:
 
 Day 1 - Firstly I listed all of the back-end and front-end features that I wished to implement in my app and using Figma I created three rough prototypes and chose my favorite one.
 
@@ -119,8 +117,7 @@ Day 8 - I made the app responsive to small, medium, large and extra large screen
 Implemented the ticker bar to display animating words, using the React Ticker library to do this. I added final touches and then I thought about adding google registration. I had a chat with my instructor and decided to install React Google Login which provided me with an easy way for users to login using their google account, that works with the existing authentication I had built.
 
 
-## 
-**Key learnings:**
+## Key learnings:
 
 
 
@@ -130,7 +127,7 @@ Implemented the ticker bar to display animating words, using the React Ticker li
 * I started building the desktop version, then I had to stop and rebuild for mobile size first which was a learning experience to always start building on mobile size.
 
 
-## **Challenges:**
+## Challenges:
 
 
 
@@ -138,14 +135,13 @@ Implemented the ticker bar to display animating words, using the React Ticker li
 * Designed the full app with two different themes.
 
 
-## **Future improvements:**
+## Future improvements:
 
 
 
 * Add Links to get tickets.
 * Add reviews.
 
-## 
-**Bugs:**
+## Bugs:
 
 * I couldn’t get the “date” to display it as a placeholder in the filter section.
