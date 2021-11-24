@@ -1,5 +1,5 @@
-# eventsGeneral Assembly
-Project 4 - EVE.Events 🕺🏻🎭🎬
+#### General Assembly
+#Project 4 - EVE.Events 🕺🏻🎭🎬
 Eve.Events is a web-app where you can search for events, confirm your attendance, register and also create your own events. 
 Event’s Link
 EVE.Events
