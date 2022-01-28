@@ -145,3 +145,10 @@ Implemented the ticker bar to display animating words, using the React Ticker li
 ## Bugs:
 
 * I couldn’t get the “date” to display it as a placeholder in the filter section.
+
+## Visit my website: 
+
+* To demo the project, head to my [Herokuapp](https://eve-social-events.herokuapp.com/).
+* To start backend server locally: `pipenv shell`
+* To run backend server locally: `python manage.py runserver`
+* To run frontend server locally: `yarn start`
