@@ -48,7 +48,7 @@ const RegisterForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      const { data } = await axios.post('api/auth/register/', formData)
+      const { data } = await axios.post('/api/auth/register/', formData)
       setTokenToLocalStorage(data.token)
       history.go(0)
     } catch (error) {
@@ -57,7 +57,7 @@ const RegisterForm = () => {
     }
   }
 
-    
+
 
 
   const handleImageUrl = (url) => {
@@ -70,7 +70,7 @@ const RegisterForm = () => {
   const responseGoogle = async (response) => {
     console.log(response)
     try {
-      const { data } = await axios.post('api/auth/register/', {
+      const { data } = await axios.post('/api/auth/register/', {
         email: response.profileObj.email,
         first_name: response.profileObj.givenName,
         last_name: response.profileObj.familyName,

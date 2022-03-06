@@ -14,9 +14,9 @@ class EventListView(APIView):
 
     def get(self, _request):
         events = Event.objects.all()
-        print('Events', events)
+        # print('Events', events)
         serialized_events = PopulatedEventSerializer(events, many=True)
-        print('SERIALIZER', serialized_events.data)
+        # print('SERIALIZER', serialized_events.data)
         return Response(serialized_events.data, status=status.HTTP_200_OK)
 
     def post(self, request):
@@ -39,7 +39,7 @@ class EventDetailView(APIView):
     def get(self, _request, pk):
         event = Event.objects.get(pk=pk)
         serialized_event = PopulatedEventSerializer(event)
-        print(serialized_event.data)
+        # print(serialized_event.data)
         return Response(serialized_event.data, status=status.HTTP_200_OK)
 
     def delete(self, _request, pk):
@@ -49,10 +49,10 @@ class EventDetailView(APIView):
 
     def put(self, request, pk):
         event_to_update = self.get_event(pk=pk)  # get our product
-        print('Request data', request.data)
+        # print('Request data', request.data)
         updated_event = EventSerializer(event_to_update, data=request.data)
         if updated_event.is_valid():  # is_valid checks the validity of the newly created object
             updated_event.save()  # saves it if it's valid
-            print('Updated data', updated_event.data)
+            # print('Updated data', updated_event.data)
             return Response(updated_event.data, status=status.HTTP_202_ACCEPTED)
         return Response(updated_event.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)

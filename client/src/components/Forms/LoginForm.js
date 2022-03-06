@@ -46,7 +46,7 @@ const LoginForm = () => {
   const responseGoogle = async (response) => {
     console.log(response)
     try {
-      const { data } = await axios.post('api/auth/login/', {
+      const { data } = await axios.post('/api/auth/login/', {
         email: response.profileObj.email,
         password: response.profileObj.googleId + 'abc?!',
       })

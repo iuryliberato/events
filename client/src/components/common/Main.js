@@ -21,7 +21,7 @@ const Main = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('api/events/')
+        const { data } = await axios.get('/api/events/')
         setEvents(data)
       } catch (error) {
         setError(true)
